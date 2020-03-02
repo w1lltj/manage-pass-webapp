@@ -8,6 +8,8 @@ import {PasswordManagementComponent} from './password-management/password-manage
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {ContentModalComponent} from './shared/content-modal.component';
 
 
 const routes: Routes = [
@@ -21,10 +23,15 @@ const routes: Routes = [
     AppComponent,
     MainNavComponent,
     DashboardComponent,
-    PasswordManagementComponent
+    PasswordManagementComponent,
+    ContentModalComponent
+  ],
+  entryComponents: [
+    ContentModalComponent
   ],
   imports: [
     BrowserModule,
+    NgbModule.forRoot(),
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
     FormsModule,
