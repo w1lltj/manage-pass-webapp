@@ -10,11 +10,13 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ContentModalComponent} from './shared/content-modal.component';
+import {AuthGuardService} from './auth-guard.service';
 
 
 const routes: Routes = [
   {path: '', component: DashboardComponent},
-  {path: 'password-management', component: PasswordManagementComponent}
+  {path: 'password-management', component: PasswordManagementComponent, canActivate: [AuthGuardService]},
+  {path: '**', redirectTo: ''}
 ];
 
 
