@@ -1,0 +1,43 @@
+body {
+  font-family: 'Source Code Pro', monospace;
+}
+
+
+a.btn {
+  &.btn-default {
+    background-color: transparent;
+    color: #AA00FF;
+    border: 2px solid #AA00FF;
+
+    &:hover {
+      background-color: transparent;
+      color: #AA00FF;
+    }
+  }
+
+  &.btn-primary {
+    background-color: #6A1B9A;
+    color: #FFFFFF;
+    border-color: transparent;
+
+    &:active {
+      background-color: #6A1B9A;
+    }
+
+    &:hover {
+      background-color: #6A1B9A;
+      color: #FFFFFF;
+    }
+  }
+
+  &.btn-danger {
+    color: #FFFFFF;
+    border-color: transparent;
+
+    &:hover {
+      border: 1px solid #dc3545;
+      background-color: transparent;
+      color: #dc3545;
+    }
+  }
+}
