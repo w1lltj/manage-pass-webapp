@@ -1,0 +1,34 @@
+.btn {
+  &.btn-default {
+    background-color: transparent;
+    color: #AA00FF;
+    border: 2px solid #AA00FF;
+
+    &:hover {
+      background-color: transparent;
+      color: #AA00FF;
+    }
+  }
+
+  &.btn-primary {
+    background-color: #6A1B9A;
+    color: #FFFFFF;
+    border-color: transparent;
+
+    &:active {
+      background-color: #6A1B9A;
+    }
+
+    &:hover {
+      background-color: #6A1B9A;
+      color: #FFFFFF;
+    }
+  }
+}
+
+.input-group .input-group-append .btn.btn-outline-secondary {
+  &:hover {
+    color: #FFFFFF;
+    background-color: #AA00FF;
+  }
+}

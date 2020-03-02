@@ -1,0 +1,31 @@
+//.nav-item.active a.nav-link {
+//  color: #AA00FF;
+//}
+
+.log-out {
+  a:hover {
+    color: #F44336;
+    cursor: pointer;
+  }
+}
+
+.bg-light {
+  background-color: #F3E5F5 !important;
+}
+
+.nav-title {
+  font-size: 20px;
+
+}
+
+.login-google {
+  border: none;
+  background-color: #F5495B;
+  color: #FFFFFF !important;
+  border-radius: 20px;
+
+  &:hover, &:active {
+    background-color: #B71C1C !important;
+
+  }
+}

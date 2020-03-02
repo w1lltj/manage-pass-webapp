@@ -1,0 +1,22 @@
+<div class="d-flex justify-content-center py-5">
+  <form [formGroup]="dashboardForm">
+    <div class="form-group">
+      <div class="row">
+        <label for="email">Email</label>
+        <input id="email" type="text" class="form-control" formControlName="user_email">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <label for="password">Password</label>
+        <input id="password" type="text" class="form-control" formControlName="user_pwd">
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <a type="button" class="btn btn-default float-right m-2" (click)="onSignIn()">SignIn</a>
+      <a type="button" class="btn btn-primary float-right m-2" (click)="onRegister()">Register</a>
+    </div>
+
+  </form>
+</div>
