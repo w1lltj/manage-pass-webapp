@@ -2,7 +2,7 @@ import {ActivatedRouteSnapshot, CanActivate, CanDeactivate, Router, RouterStateS
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {AuthService} from './auth.service';
-import {catchError, map} from 'rxjs/internal/operators';
+import {catchError, map} from 'rxjs/operators';
 
 export interface DeactivateComponent {
   deActivateComponent: () => Observable<boolean> | Promise<boolean> | boolean;
