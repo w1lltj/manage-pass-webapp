@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {ContentModalComponent} from '../shared/content-modal.component';
+import {PasswordDataService} from '../password-data.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'password-management',
@@ -8,14 +10,19 @@ import {ContentModalComponent} from '../shared/content-modal.component';
   styleUrls: ['./password-management.component.scss']
 })
 export class PasswordManagementComponent implements OnInit {
+  passwordDatas$: Observable<any>;
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal, private passwordDataService: PasswordDataService) { }
 
   ngOnInit() {
+    this.passwordDatas$ = this.passwordDataService.onGetAllDatas();
   }
 
-  onDetail() {
+  onDetail(data: any) {
     const modalRef = this.modalService.open(ContentModalComponent);
-    (modalRef.componentInstance as ContentModalComponent).data = 'dummy details';
+    (modalRef.componentInstance as ContentModalComponent).data = data;
+  }
+
+  onAddData() {
   }
 }
