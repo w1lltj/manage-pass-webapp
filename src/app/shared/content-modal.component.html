@@ -1,40 +1,46 @@
 <div class="modal-header">
-  <h4 class="modal-title text-center">{{data.accountname}}</h4>
+  <h4 class="modal-title text-center">{{!isAddEdit ? data.accountname : 'Add/Edit Data'}}</h4>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-<ng-container *ngIf="!isEdit">
+<ng-container *ngIf="!isAddEdit">
   <div class="modal-body">
     <p>username: {{data.username}}</p>
     <p>password: {{data.password}}</p>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-default" (click)="onEdit()">Edit</button>
-    <button type="button" class="btn btn-danger" (click)="activeModal.close('Close click')">Delete</button>
+    <button type="button" class="btn btn-danger" (click)="onDelete()">Delete</button>
   </div>
 </ng-container>
 
-<ng-container *ngIf="isEdit">
+<ng-container *ngIf="isAddEdit">
   <div class="d-flex flex-column py-5">
     <div class="d-flex justify-content-center">
-      <form>
+      <form [formGroup]="addEditForm">
         <div class="form-group">
           <div class="row">
-            <label for="email">Email</label>
-            <input id="email" type="text" class="form-control" >
+            <label for="accountname">Accountname</label>
+            <input id="accountname" type="text" class="form-control" formControlName="accountname">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <label for="username">Username</label>
+            <input id="username" type="text" class="form-control" formControlName="username">
           </div>
         </div>
         <div class="form-group">
           <div class="row">
             <label for="password">Password</label>
-            <input id="password" type="text" class="form-control">
+            <input id="password" type="text" class="form-control" formControlName="password">
           </div>
         </div>
 
         <div class="d-flex justify-content-center">
-          <a type="button" class="btn btn-default float-right m-2" (click)="activeModal.close('Close click')">Cancel</a>
-          <a type="button" class="btn btn-primary float-right m-2" >Update</a>
+          <a type="button" class="btn btn-default float-right m-2" (click)="activeModal.dismiss('Cancel click')">Cancel</a>
+          <a type="button" class="btn btn-primary float-right m-2" (click)="onSubmit()">Submit</a>
         </div>
 
       </form>

@@ -10,19 +10,43 @@ import {Observable} from 'rxjs';
   styleUrls: ['./password-management.component.scss']
 })
 export class PasswordManagementComponent implements OnInit {
-  passwordDatas$: Observable<any>;
+  passwordDatas: Observable<any>;
+
 
   constructor(private modalService: NgbModal, private passwordDataService: PasswordDataService) { }
 
   ngOnInit() {
-    this.passwordDatas$ = this.passwordDataService.onGetAllDatas();
+    this.passwordDatas = this.passwordDataService.onGetAllDatas();
   }
 
   onDetail(data: any) {
     const modalRef = this.modalService.open(ContentModalComponent);
     (modalRef.componentInstance as ContentModalComponent).data = data;
+
+    modalRef.result.then(
+      (res) => {
+        console.log('modal..... ', res);
+        this.passwordDatas = this.passwordDataService.onGetAllDatas();
+      },
+      _ => {}
+    );
   }
 
   onAddData() {
+    const modalRef = this.modalService.open(ContentModalComponent);
+    (modalRef.componentInstance as ContentModalComponent).isAddEdit = true;
+
+    modalRef.result.then(
+      (res) => {
+        console.log('modal..... ', res);
+        this.passwordDatas = this.passwordDataService.onGetAllDatas();
+      },
+      _ => {}
+    );
+  }
+
+  // ToDO: trackBy only works with Array NOT Observable
+  trackByFn(idx: number, data: any) {
+    return idx;
   }
 }

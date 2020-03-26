@@ -39,4 +39,30 @@ export class PasswordDataService {
         })
       );
   }
+
+  onDeleteData(id: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this._httpClient.post('http://localhost:3001/password-data/delete', {_id: id}, {headers: headers})
+      .pipe(
+        catchError( (err: HttpErrorResponse) => {
+          console.log('deleteData_err..... ', err);
+          return throwError(err);
+        })
+      );
+  }
+
+  onUpdateData(passwordData: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this._httpClient.post('http://localhost:3001/password-data/update', passwordData, {headers: headers})
+      .pipe(
+        catchError((err: HttpErrorResponse) => {
+          console.log('updateData_err..... ', err);
+          return throwError(err);
+        })
+      );
+  }
 }
