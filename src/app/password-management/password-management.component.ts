@@ -11,12 +11,17 @@ import {Observable} from 'rxjs';
 })
 export class PasswordManagementComponent implements OnInit {
   passwordDatas: Observable<any>;
-
+  pageSize: number;
+  currentPage: number = 1;
+  totalDatas: number = 0;
 
   constructor(private modalService: NgbModal, private passwordDataService: PasswordDataService) { }
 
   ngOnInit() {
     this.passwordDatas = this.passwordDataService.onGetAllDatas();
+    this.passwordDatas.subscribe((data) => {
+      this.totalDatas = data.length;
+    });
   }
 
   onDetail(data: any) {
@@ -49,4 +54,15 @@ export class PasswordManagementComponent implements OnInit {
   trackByFn(idx: number, data: any) {
     return idx;
   }
+
+  setPageSize(size: number) {
+    this.pageSize = size;
+    this.passwordDatas = this.passwordDataService.onGetAllDatas(this.currentPage, this.pageSize);
+  }
+
+  onPageChange() {
+    console.log('page changes currentPage..... ', this.currentPage);
+    this.passwordDatas = this.passwordDataService.onGetAllDatas(this.currentPage, this.pageSize);
+  }
+
 }

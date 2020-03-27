@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {PasswordData} from './password-data.model';
@@ -11,11 +11,14 @@ import {PasswordData} from './password-data.model';
 export class PasswordDataService {
   constructor(private _httpClient: HttpClient) {}
 
-  onGetAllDatas(): Observable<any> {
+  onGetAllDatas(page?: number, limit?: number): Observable<any> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    const params = new HttpParams();
+    params = params.append('page', page);
+    params = params.append('limit', limit);
 
-    return this._httpClient.get('http://localhost:3001/password-data/list', {headers: headers})
+    return this._httpClient.get('http://localhost:3001/password-data/list', {headers: headers, params: params})
       .pipe(
         map(
           (res: any) => res.passwordDatas

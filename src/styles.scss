@@ -15,7 +15,7 @@ a.btn {
     }
   }
 
-  &.btn-primary {
+  &.btn-primary, &.btn-outline-primary {
     background-color: #6A1B9A;
     color: #FFFFFF;
     border-color: transparent;
@@ -39,5 +39,17 @@ a.btn {
       background-color: transparent;
       color: #dc3545;
     }
+  }
+}
+
+.page-item.active .page-link {
+  background-color: #6A1B9A;
+  border-color: #6A1B9A;
+  color: #FFFFFF;
+}
+
+.page-item {
+  a {
+    color: #6A1B9A;
   }
 }
